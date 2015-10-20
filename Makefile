@@ -1,4 +1,4 @@
-all: fact fib sqrt count_change
+all: fact fib sqrt count_change pascal
 CPP_FLAGS= -std=c++11 -O2
 fact: fact.cpp
 	g++ fact.cpp -o fact $(CPP_FLAGS)
@@ -8,6 +8,8 @@ sqrt: sqrt.cpp
 	g++ sqrt.cpp -o sqrt $(CPP_FLAGS)
 count_change: count_change.cpp
 	g++ count_change.cpp -o count_change $(CPP_FLAGS)
+pascal: pascal.cpp
+	g++ pascal.cpp -o pascal $(CPP_FLAGS)
 clean:
-	rm fact fib sqrt count_change *.o
+	rm fact fib sqrt count_change pascal *.o
 
