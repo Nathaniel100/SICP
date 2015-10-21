@@ -13,7 +13,7 @@
  * */
 /* -- my -- */
 static const uint32_t CHANGES_COUNT = 5;
-static const std::array<uint32_t, CHANGES_COUNT> CHANGES= {1, 5, 10, 25, 50};
+static const std::array<uint32_t, CHANGES_COUNT> CHANGES= {{1, 5, 10, 25, 50}};
 
 uint32_t forChange(uint32_t total, uint32_t pos) {
     if(pos == 0 || total == 0) return 1;
