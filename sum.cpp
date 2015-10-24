@@ -2,10 +2,9 @@
 #include <functional>
 #include <cassert>
 
-int32_t cube(int32_t a) {
-    int64_t b = static_cast<int64_t>(a) * a * a;
-    assert(b <= INT_MAX && b >= INT_MIN);
-    return static_cast<int32_t>(b);
+template<typename T>
+T cube(T a) {
+    return a*a*a;
 }
 
 int32_t sumIntergers(int32_t a, int32_t b) {
@@ -30,6 +29,12 @@ R sum(std::function<R(T)> term, T a, std::function<T(T)> next, T b) {
     return term(a) + sum(term, next(a), next, b);
 }
 
+template<typename F>
+double integral(F f, int a, int b, double dx) {
+    auto addDx = [=](double x){return x + dx;};
+    return sum<double, double>(f,(a+dx/2), addDx, b) * dx;
+}
+
 int main() {
     std::cout << "1-100 sum: " << sumIntergers(1, 100) << '\n';
     std::cout << "1-100  cube sum: " << sumCubes(1, 100) << '\n';
@@ -45,7 +50,7 @@ int main() {
         << '\n';
     std::cout << "1-100 cube sum: "
         << sum<int32_t, int32_t>(
-                cube,
+                cube<int32_t>,
                 1,
                 [](int32_t a){return a+1;},
                 100)
@@ -57,4 +62,6 @@ int main() {
                 [](int32_t a){return a+4;},
                 100)
         << '\n';
+    std::cout << "integral cube 0-1: " << integral(cube<double>, 0, 1, 0.01) << '\n';
+
 }
