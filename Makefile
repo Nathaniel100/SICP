@@ -1,7 +1,8 @@
 CC = g++
 CFLAGS = -std=c++11 -c -g -Wall -O2
-TARGET= fact sqrt pascal expt fib count_change gcd prime
-SOURCES= fact.cpp sqrt.cpp pascal.cpp expt.cpp fib.cpp count_change.cpp gcd.cpp prime.cpp
+TARGET= fact sqrt pascal expt fib count_change gcd prime sum
+SOURCES= fact.cpp sqrt.cpp pascal.cpp expt.cpp fib.cpp count_change.cpp gcd.cpp prime.cpp \
+		 sum.cpp
 OBJECTS= $(SOURCES:.cpp=.o)
 
 all: $(TARGET)
@@ -16,6 +17,7 @@ fib: fib.o
 count_change: count_change.o
 gcd: gcd.o
 prime: prime.o
+sum: sum.o
 
 clean:
 	$(RM) *.o *~ $(TARGET)
