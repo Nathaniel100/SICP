@@ -1,9 +1,9 @@
 CC = g++
 CFLAGS = -std=c++11 -c -g -Wall -O2
 TARGET= fact sqrt pascal expt fib count_change gcd prime \
-		sum accumulate half_interval_method
+		sum accumulate half_interval_method fixed_point
 SOURCES= fact.cpp sqrt.cpp pascal.cpp expt.cpp fib.cpp count_change.cpp gcd.cpp prime.cpp \
-		 sum.cpp accumulate.cpp half_interval_method.cpp
+		 sum.cpp accumulate.cpp half_interval_method.cpp fixed_point.cpp
 OBJECTS= $(SOURCES:.cpp=.o)
 
 all: $(TARGET)
@@ -21,6 +21,7 @@ prime: prime.o
 sum: sum.o
 accumulate: accumulate.o
 half_interval_method: half_interval_method.o
+fixed_point: fixed_point.o
 
 clean:
 	$(RM) *.o *~ $(TARGET)
